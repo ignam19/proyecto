@@ -4,6 +4,7 @@ from tkinter import ttk
 ventana = Tk()
 ventana.title("Control de stock")
 ventana.geometry("1000x600")
+ventana.iconbitmap("C:\python-vscode\proyecto\\app\icono.ico")
 
 #entrada
 e_texto = Entry(ventana, font= ("Calibri 15"))
