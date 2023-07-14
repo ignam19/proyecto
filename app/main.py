@@ -47,13 +47,10 @@ boton_modificar = Button(frame_3botones, text= "Modificar", width= 10, height= 2
 boton_eliminar = Button(frame_3botones, text= "Eliminar", width= 10, height= 2)
 
 #agregar botones
-boton_buscar.place(x= 270, y= 5)
+boton_buscar.place(x= 230, y= 5)
 boton_agregar.grid(row=0, column=0, padx= 5, pady= 5)
 boton_eliminar.grid(row=0, column=1, padx= 5, pady= 5)
 boton_modificar.grid(row=0, column=2, padx= 5, pady= 5)
-
-#estilos botones
-
 
 #frame tabla
 frame_tabla= Frame(ventana)
