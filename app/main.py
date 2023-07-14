@@ -6,33 +6,54 @@ ventana.title("Control de stock")
 ventana.geometry("1000x600")
 ventana.iconbitmap("C:\python-vscode\proyecto\\app\icono.ico")
 
+#frame entradas
+frame_entradas = Frame(ventana)
+frame_entradas.place(x= 5, y= 270)
 
+#label de entradas
+label_codigo = Label(frame_entradas, text= "Codigo:", font=("Calibri", 14))
+label_articulo = Label(frame_entradas, text= "Articulo:", font=("Calibri", 14))
+label_stock = Label(frame_entradas, text= "Stock:", font=("Calibri", 14))
+label_precio = Label(frame_entradas, text= "Precio:", font=("Calibri", 14))
+
+#agregar label
+label_codigo.grid(row= 0, column= 0, sticky= "e")
+label_articulo.grid(row= 1, column= 0, sticky= "e")
+label_stock.grid(row= 2, column= 0, sticky= "e")
+label_precio.grid(row= 3, column= 0, sticky= "e")
 
 #entrada
 e_texto = Entry(ventana, font=("Calibri", 14))
-e_codigo = Entry(ventana, font=("Calibri", 14))
-e_articulo = Entry(ventana, font=("Calibri", 14))
-e_stock = Entry(ventana, font=("Calibri", 14))
-e_precio = Entry(ventana, font=("Calibri", 14))
+e_codigo = Entry(frame_entradas, font=("Calibri", 14))
+e_articulo = Entry(frame_entradas, font=("Calibri", 14))
+e_stock = Entry(frame_entradas, font=("Calibri", 14))
+e_precio = Entry(frame_entradas, font=("Calibri", 14))
 
 #agregar entrada
 e_texto.place(x= 5, y= 5)
-e_codigo.place(x= 5, y= 270)
-e_articulo.place(x= 5, y= 310)
-e_stock.place(x= 5, y= 350)
-e_precio.place(x= 5, y= 390)
+e_codigo.grid(row= 0, column= 1)
+e_articulo.grid(row= 1, column= 1)
+e_stock.grid(row= 2, column= 1)
+e_precio.grid(row= 3, column= 1)
+
+#frame botones agr,elim,mod
+frame_3botones = Frame(ventana)
+frame_3botones.place(x=350, y=270)
 
 #botones
 boton_buscar = Button(ventana, text= "Buscar", width= 6, height= 1)
-boton_agregar = Button(ventana, text= "Agregar", width= 10, height= 2)
-boton_modificar = Button(ventana, text= "Modificar", width= 10, height= 2)
-boton_eliminar = Button(ventana, text= "Eliminar", width= 10, height= 2)
+boton_agregar = Button(frame_3botones, text= "Agregar", width= 10, height= 2)
+boton_modificar = Button(frame_3botones, text= "Modificar", width= 10, height= 2)
+boton_eliminar = Button(frame_3botones, text= "Eliminar", width= 10, height= 2)
 
 #agregar botones
-boton_buscar.place(x= 220, y= 5)
-boton_agregar.place(x= 220, y= 270)
-boton_modificar.place(x= 220, y= 310)
-boton_eliminar.place(x= 220, y= 350)
+boton_buscar.place(x= 270, y= 5)
+boton_agregar.grid(row=0, column=0, padx= 5, pady= 5)
+boton_eliminar.grid(row=0, column=1, padx= 5, pady= 5)
+boton_modificar.grid(row=0, column=2, padx= 5, pady= 5)
+
+#estilos botones
+
 
 #frame tabla
 frame_tabla= Frame(ventana)
