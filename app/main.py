@@ -6,19 +6,33 @@ ventana.title("Control de stock")
 ventana.geometry("1000x600")
 ventana.iconbitmap("C:\python-vscode\proyecto\\app\icono.ico")
 
+
+
 #entrada
-e_texto = Entry(ventana, font= ("Calibri 15"))
+e_texto = Entry(ventana, font=("Calibri", 14))
+e_codigo = Entry(ventana, font=("Calibri", 14))
+e_articulo = Entry(ventana, font=("Calibri", 14))
+e_stock = Entry(ventana, font=("Calibri", 14))
+e_precio = Entry(ventana, font=("Calibri", 14))
 
 #agregar entrada
-e_texto.place(x= 5, y= 5,)
-
+e_texto.place(x= 5, y= 5)
+e_codigo.place(x= 5, y= 270)
+e_articulo.place(x= 5, y= 310)
+e_stock.place(x= 5, y= 350)
+e_precio.place(x= 5, y= 390)
 
 #botones
 boton_buscar = Button(ventana, text= "Buscar", width= 6, height= 1)
-
+boton_agregar = Button(ventana, text= "Agregar", width= 10, height= 2)
+boton_modificar = Button(ventana, text= "Modificar", width= 10, height= 2)
+boton_eliminar = Button(ventana, text= "Eliminar", width= 10, height= 2)
 
 #agregar botones
 boton_buscar.place(x= 220, y= 5)
+boton_agregar.place(x= 220, y= 270)
+boton_modificar.place(x= 220, y= 310)
+boton_eliminar.place(x= 220, y= 350)
 
 #frame tabla
 frame_tabla= Frame(ventana)
