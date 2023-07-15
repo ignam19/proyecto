@@ -74,6 +74,10 @@ tabla.heading("column3", text= "Precio", anchor= CENTER)
 #insercion de tabla
 tabla.grid(row= 0, column= 0, columnspan= 5, pady= 5)
 
+#scrollbar de tabla
+scrollvert = Scrollbar(frame_tabla, command= tabla.yview, width= 20)
+scrollvert.grid(row= 0, column= 6, sticky="nsew")
+tabla.config(yscrollcommand=scrollvert.set)
 
 
 
