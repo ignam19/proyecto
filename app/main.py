@@ -71,8 +71,11 @@ tabla.heading("column1", text= "Artículo", anchor= CENTER)
 tabla.heading("column2", text= "Stock", anchor= CENTER)
 tabla.heading("column3", text= "Precio", anchor= CENTER)
 
-#insercion de tabla
+#insercion de tabla en frame
 tabla.grid(row= 0, column= 0, columnspan= 5, pady= 5)
+
+#insercion de valores en tabla
+tabla.insert("",END, text= "213124", values=("rotula", "2", "5000c/u"))
 
 #scrollbar de tabla
 scrollvert = Scrollbar(frame_tabla, command= tabla.yview, width= 20)
