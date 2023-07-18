@@ -13,8 +13,14 @@ def agregar_articulo():
 #-------------------------------------------------------
 
 #--------funcion boton eliminar articulo---------------    
-def eliminar_articulo():
-    pass
+# def modificar_articulo():
+#     entradas = [e_codigo, e_articulo, e_stock, e_precio]
+#     valores = []
+#     for i in range(len(entradas)):
+#         valores.append(entradas[i].get())
+        
+        
+    
 #------------------------------------------------------
 
 
@@ -62,8 +68,7 @@ boton_buscar = Button(ventana, text= "Buscar", width= 6, height= 1)
 boton_agregar = Button(frame_3botones, text= "Agregar", width= 10, height= 2,
                        command= lambda: agregar_articulo())
 boton_modificar = Button(frame_3botones, text= "Modificar", width= 10, height= 2)
-boton_eliminar = Button(frame_3botones, text= "Eliminar", width= 10, height= 2,
-                        command= lambda: eliminar_articulo())
+boton_eliminar = Button(frame_3botones, text= "Eliminar", width= 10, height= 2)
 
 #agregar botones
 boton_buscar.place(x= 230, y= 5)
