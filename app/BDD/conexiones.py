@@ -37,10 +37,9 @@ def insertar(codigo, articulo, stock, precio):
 #mi_cursor.execute("CREATE TABLE TABLA (CODIGO VARCHAR(50), ARTICULO VARCHAR(50), STOCK INTEGER, PRECIO INTEGER) ")
 #--------------------------------------------------
 
-def eliminar(tabla):
+def eliminar(codigo):
     mi_conexion= sqlite3.connect("C:\python-vscode\proyecto\\app\BDD\primer_bdd.db")
     mi_cursor= mi_conexion.cursor()
-    codigo = tabla
      
     mi_cursor.execute("DELETE FROM TABLA WHERE CODIGO= '%s'" %codigo)
     

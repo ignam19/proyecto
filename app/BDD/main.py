@@ -10,12 +10,16 @@ def agregar_articulo():
         valores.append(entradas[i].get())
         
     conexiones.insertar(valores[0], valores[1], valores[2], valores[3])
+    insertar_tabla(valores[0], valores[1], valores[2], valores[3])
 #-------------------------------------------------------
 
 #--------funcion boton eliminar articulo---------------    
 def eliminar_articulo():
-    valores = e_codigo.get()
-    conexiones.eliminar(valores)
+    seleccion = tabla.focus()  # Obtener el ID del elemento seleccionado
+    if seleccion:  # Asegurarse de que haya algo seleccionado
+        tabla.delete(seleccion)
+        
+        
     
 #------------------------------------------------------
 
@@ -95,12 +99,21 @@ tabla.heading("column3", text= "Precio", anchor= CENTER)
 #insercion de tabla en frame
 tabla.grid(row= 0, column= 0, columnspan= 5, pady= 5)
 
-#insercion de valores en tabla
-
-def refrescar():
+#insercion de valores en la bd
+def cargar_datos():
     for fila in conexiones.mostrar_tablas():
         tabla.insert("",END, text= fila[0], values=(fila[1], fila[2], fila[3]))
+cargar_datos()
 
+#insercion de valores en tabla
+def insertar_tabla(codigo, articulo, stock, precio):
+    tabla.insert("",END, text= codigo, values=(articulo, stock, precio))
+
+#eliminacion de una fila 
+def eliminar_fila():
+    seleccion = tabla.focus()  # Obtener el ID del elemento seleccionado
+    if seleccion:  # Asegurarse de que haya algo seleccionado
+        tabla.delete(seleccion)
 
 #scrollbar de tabla
 scrollvert = Scrollbar(frame_tabla, command= tabla.yview, width= 20)
