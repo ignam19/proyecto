@@ -13,13 +13,9 @@ def agregar_articulo():
 #-------------------------------------------------------
 
 #--------funcion boton eliminar articulo---------------    
-# def modificar_articulo():
-#     entradas = [e_codigo, e_articulo, e_stock, e_precio]
-#     valores = []
-#     for i in range(len(entradas)):
-#         valores.append(entradas[i].get())
-        
-        
+def eliminar_articulo():
+    valores = e_codigo.get()
+    conexiones.eliminar(valores)
     
 #------------------------------------------------------
 
@@ -68,7 +64,8 @@ boton_buscar = Button(ventana, text= "Buscar", width= 6, height= 1)
 boton_agregar = Button(frame_3botones, text= "Agregar", width= 10, height= 2,
                        command= lambda: agregar_articulo())
 boton_modificar = Button(frame_3botones, text= "Modificar", width= 10, height= 2)
-boton_eliminar = Button(frame_3botones, text= "Eliminar", width= 10, height= 2)
+boton_eliminar = Button(frame_3botones, text= "Eliminar", width= 10, height= 2,
+                        command= lambda: eliminar_articulo())
 
 #agregar botones
 boton_buscar.place(x= 230, y= 5)
@@ -99,7 +96,11 @@ tabla.heading("column3", text= "Precio", anchor= CENTER)
 tabla.grid(row= 0, column= 0, columnspan= 5, pady= 5)
 
 #insercion de valores en tabla
-tabla.insert("",END, text= "213124", values=("rotula", "2", "5000c/u"))
+
+def refrescar():
+    for fila in conexiones.mostrar_tablas():
+        tabla.insert("",END, text= fila[0], values=(fila[1], fila[2], fila[3]))
+
 
 #scrollbar de tabla
 scrollvert = Scrollbar(frame_tabla, command= tabla.yview, width= 20)
