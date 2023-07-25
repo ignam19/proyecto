@@ -10,14 +10,14 @@ def agregar_articulo():
         valores.append(entradas[i].get())
         
     conexiones.insertar(valores[0], valores[1], valores[2], valores[3])
+    insertar_tabla(valores[0], valores[1], valores[2], valores[3])
 #-------------------------------------------------------
 
 #--------funcion boton eliminar articulo---------------    
-# def modificar_articulo():
-#     entradas = [e_codigo, e_articulo, e_stock, e_precio]
-#     valores = []
-#     for i in range(len(entradas)):
-#         valores.append(entradas[i].get())
+def eliminar_articulo():
+    seleccion = tabla.focus()  # Obtener el ID del elemento seleccionado
+    if seleccion:  # Asegurarse de que haya algo seleccionado
+        tabla.delete(seleccion)
         
         
     
@@ -68,7 +68,8 @@ boton_buscar = Button(ventana, text= "Buscar", width= 6, height= 1)
 boton_agregar = Button(frame_3botones, text= "Agregar", width= 10, height= 2,
                        command= lambda: agregar_articulo())
 boton_modificar = Button(frame_3botones, text= "Modificar", width= 10, height= 2)
-boton_eliminar = Button(frame_3botones, text= "Eliminar", width= 10, height= 2)
+boton_eliminar = Button(frame_3botones, text= "Eliminar", width= 10, height= 2,
+                        command= lambda: eliminar_articulo())
 
 #agregar botones
 boton_buscar.place(x= 230, y= 5)
@@ -98,8 +99,21 @@ tabla.heading("column3", text= "Precio", anchor= CENTER)
 #insercion de tabla en frame
 tabla.grid(row= 0, column= 0, columnspan= 5, pady= 5)
 
+#insercion de valores en la bd
+def cargar_datos():
+    for fila in conexiones.mostrar_tablas():
+        tabla.insert("",END, text= fila[0], values=(fila[1], fila[2], fila[3]))
+cargar_datos()
+
 #insercion de valores en tabla
-tabla.insert("",END, text= "213124", values=("rotula", "2", "5000c/u"))
+def insertar_tabla(codigo, articulo, stock, precio):
+    tabla.insert("",END, text= codigo, values=(articulo, stock, precio))
+
+#eliminacion de una fila 
+def eliminar_fila():
+    seleccion = tabla.focus()  # Obtener el ID del elemento seleccionado
+    if seleccion:  # Asegurarse de que haya algo seleccionado
+        tabla.delete(seleccion)
 
 #scrollbar de tabla
 scrollvert = Scrollbar(frame_tabla, command= tabla.yview, width= 20)
