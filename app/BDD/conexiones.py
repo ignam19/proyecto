@@ -26,8 +26,12 @@ def insertar(codigo, articulo, stock, precio):
 def eliminar(tabla):
     mi_conexion= sqlite3.connect("C:\python-vscode\proyecto\\app\BDD\primer_bdd.db")
     mi_cursor= mi_conexion.cursor()
+    repuesto = [(tabla)]
     
     
+    #### INCOMPLETA ####
+    
+    mi_cursor.executemany("DELETE FROM TABLA WHERE CODIGO= VALUES(?)", repuesto)
     
     
     mi_conexion.commit()
