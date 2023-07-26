@@ -1,7 +1,7 @@
 import sqlite3
 
 def mostrar_tablas():
-    mi_conexion= sqlite3.connect("C:\python-vscode\proyecto\\app\BDD\primer_bdd.db")
+    mi_conexion= sqlite3.connect("C:\python-vscode\proyecto\\app\BDD\primer_bdd2.db")
     mi_cursor= mi_conexion.cursor()     
 
 
@@ -15,7 +15,7 @@ def mostrar_tablas():
 
 def insertar(codigo, articulo, stock, precio):
 #CREADOR DE BASE DE DATOS
-    mi_conexion= sqlite3.connect("C:\python-vscode\proyecto\\app\BDD\primer_bdd.db")
+    mi_conexion= sqlite3.connect("C:\python-vscode\proyecto\\app\BDD\primer_bdd2.db")
 
 #CREADOR DE CURSOR
     mi_cursor= mi_conexion.cursor()
