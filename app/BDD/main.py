@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import ttk
+import tkinter as tk
 import conexiones
 
 #--------funcion boton agregar articulo----------------
@@ -18,15 +19,14 @@ def eliminar_articulo():
     seleccion = tabla.focus()  # Obtener el ID del elemento seleccionado
     if seleccion:  # Asegurarse de que haya algo seleccionado
         tabla.delete(seleccion)
+        conexiones.eliminar(e_codigo.get())
         
-        
-    
 #------------------------------------------------------
 
 
 ventana = Tk()
 ventana.title("Control de stock")
-ventana.geometry("1000x600")
+ventana.geometry("1200x600")
 ventana.iconbitmap("C:\python-vscode\proyecto\\app\icono.ico")
 
 #frame entradas
@@ -82,32 +82,55 @@ frame_tabla= Frame(ventana)
 frame_tabla.place(x= 5, y= 30)
 
 #tabla
-tabla = ttk.Treeview(frame_tabla, columns=("column1", "column2", "column3"))
+tabla = ttk.Treeview(frame_tabla, columns=("column1", "column2", "column3", "column4"))
 
 #estilo de columnas
 tabla.column("#0", width= 220)
 tabla.column("column1", width= 220, anchor= CENTER)
 tabla.column("column2", width= 220, anchor= CENTER)
 tabla.column("column3", width= 220, anchor= CENTER)
+tabla.column("column4", width= 220, anchor= CENTER)
 
 #estilo de cabecera de columnas
-tabla.heading("#0", text= "Código", anchor= CENTER)
-tabla.heading("column1", text= "Artículo", anchor= CENTER)
-tabla.heading("column2", text= "Stock", anchor= CENTER)
-tabla.heading("column3", text= "Precio", anchor= CENTER)
+tabla.heading("#0", text= "ID")
+tabla.heading("column1", text= "Código", anchor= CENTER)
+tabla.heading("column2", text= "Artículo", anchor= CENTER)
+tabla.heading("column3", text= "Stock", anchor= CENTER)
+tabla.heading("column4", text= "Precio", anchor= CENTER)
 
 #insercion de tabla en frame
 tabla.grid(row= 0, column= 0, columnspan= 5, pady= 5)
 
+def cargar_entry(event):
+    # Obtener la selección actual del Treeview
+    seleccion = tabla.focus()
+
+    # Obtener los valores asociados a los items seleccionados
+    valores = tabla.item(seleccion, 'values')
+
+    # Cargar los valores en el Entry correspondiente
+    if valores:
+        e_codigo.delete(0, tk.END)  # Limpiar el Entry antes de cargar nuevos datos
+        e_articulo.delete(0, tk.END)
+        e_stock.delete(0, tk.END)
+        e_precio.delete(0, tk.END)
+        e_codigo.insert(0, valores[0])  # Insertar el valor en el Entry
+        e_articulo.insert(0, valores[1])
+        e_stock.insert(0, valores[2]) 
+        e_precio.insert(0, valores[3]) 
+        
+# Vincular el evento de clic a la función cargar_datos
+tabla.bind("<ButtonRelease-1>", cargar_entry)
+
 #insercion de valores en la bd
 def cargar_datos():
     for fila in conexiones.mostrar_tablas():
-        tabla.insert("",END, text= fila[0], values=(fila[1], fila[2], fila[3]))
+        tabla.insert("",END, values=(fila[0], fila[1], fila[2], fila[3]))
 cargar_datos()
 
 #insercion de valores en tabla
 def insertar_tabla(codigo, articulo, stock, precio):
-    tabla.insert("",END, text= codigo, values=(articulo, stock, precio))
+    tabla.insert("",END, values=(codigo, articulo, stock, precio))
 
 #eliminacion de una fila 
 def eliminar_fila():
