@@ -1,7 +1,19 @@
 import sqlite3
 
+
+#### CREADOR DE BASES DE DATOS POR BLOQUEO #####
+
+# mi_conexion= sqlite3.connect("C:\python-vscode\proyecto\\app\BDD\primer_bdd3.db")
+# mi_cursor= mi_conexion.cursor()  
+
+# mi_cursor.execute("CREATE TABLE TABLA (CODIGO VARCHAR(50), ARTICULO VARCHAR(50), STOCK INTEGER, PRECIO INTEGER) ")   
+
+# mi_conexion.commit()
+# mi_conexion.close()
+
+
 def mostrar_tablas():
-    mi_conexion= sqlite3.connect("C:\python-vscode\proyecto\\app\BDD\primer_bdd2.db")
+    mi_conexion= sqlite3.connect("C:\python-vscode\proyecto\\app\BDD\primer_bdd3.db")
     mi_cursor= mi_conexion.cursor()     
 
 
@@ -15,7 +27,7 @@ def mostrar_tablas():
 
 def insertar(codigo, articulo, stock, precio):
 #CREADOR DE BASE DE DATOS
-    mi_conexion= sqlite3.connect("C:\python-vscode\proyecto\\app\BDD\primer_bdd2.db")
+    mi_conexion= sqlite3.connect("C:\python-vscode\proyecto\\app\BDD\primer_bdd3.db")
 
 #CREADOR DE CURSOR
     mi_cursor= mi_conexion.cursor()
@@ -38,7 +50,7 @@ def insertar(codigo, articulo, stock, precio):
 #--------------------------------------------------
 
 def eliminar(codigo):
-    mi_conexion= sqlite3.connect("C:\python-vscode\proyecto\\app\BDD\primer_bdd2.db")
+    mi_conexion= sqlite3.connect("C:\python-vscode\proyecto\\app\BDD\primer_bdd3.db")
     mi_cursor= mi_conexion.cursor()
      
     consulta = "DELETE FROM TABLA WHERE CODIGO = ?;"
